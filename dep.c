@@ -6,7 +6,7 @@
 
 
 
-int main(void){
+int dep(void){
 	SDL_Surface *screen;
 	SDL_Surface *image;
 	SDL_Surface *masque;
@@ -14,7 +14,7 @@ int main(void){
 	SDL_Event event;
 	SDL_Rect positionecran;
 	SDL_Rect posp;
-	
+	//engime e;	
 	
 	char pause;
 	int collisionRightSide=0;
@@ -23,7 +23,7 @@ int main(void){
 		printf("Unable to initialize SDL: %s\n", SDL_GetError());
 		return -1;
 	}
-	screen = SDL_SetVideoMode(8000, 1024, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
+	screen = SDL_SetVideoMode(1920, 1024, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
 	if(screen == NULL){
 		printf("Unable to set video mode: %s\n", SDL_GetError());
 		return -1;
@@ -99,9 +99,17 @@ int main(void){
 							positionecran.x-=10;
 							SDL_BlitSurface(masque,NULL,screen,&positionecran);
 							SDL_UpdateRect(screen,0,0,0,0);
+                                        //               if(//collisionHopital=1)
+/*{ alea=3;
+init_enigme(e);
+generate_afficher(ecran,image,e,alea);
+solution_e(image);
+resolution(running,run);
+afficher_resultat(ecran,solution,r,e);*/
 					
 				
 							break;
+							
 					}
 				}
 			}
