@@ -78,6 +78,10 @@ int main(void){
 							break;
 						case SDLK_LEFT:
 							posp.x -= 20;
+							positionecran.x+=10;
+							SDL_BlitSurface(masque,NULL,screen,&positionecran);
+							SDL_UpdateRect(screen,0,0,0,0);
+					
 							break;
 						case SDLK_DOWN:
 							posp.y += 20;
@@ -92,6 +96,9 @@ int main(void){
 							break;
 						case SDLK_RIGHT:
 							posp.x += 20;
+							positionecran.x-=10;
+							SDL_BlitSurface(masque,NULL,screen,&positionecran);
+							SDL_UpdateRect(screen,0,0,0,0);
 					
 				
 							break;
