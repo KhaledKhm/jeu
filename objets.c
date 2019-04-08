@@ -2,14 +2,12 @@
 #include <stdio.h>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
-//#include "fevent.c"
-//#include "fmap.c"
-//#include "scrolling.c"
+
 
 
 int main(void){
 	SDL_Surface *screen;
-	SDL_Surface *image;
+	//SDL_Surface *image;
 	SDL_Surface *Lune;
 	SDL_Surface *Arbre;
 	SDL_Surface *Obstacle1;
@@ -32,18 +30,18 @@ int main(void){
 		printf("Unable to set video mode: %s\n", SDL_GetError());
 		return -1;
 	}
-	image = IMG_Load("Background.png");
+	/*image = IMG_Load("Background.png");
 	if(image == NULL){
 		printf("Unable to load bitmap: %s\n", SDL_GetError());
 		return 1;
 	}
-	
+	*/
 	
 	
 	positionecran.x = 0;
 	positionecran.y = 0;
-	positionecran.w = image->w;
-	positionecran.h = image->h;
+	//positionecran.w = image->w;
+//	positionecran.h = image->h;
 	poslune.x=30;
 	poslune.y=70;
 	Lune = IMG_Load("Lune.png");
@@ -61,7 +59,7 @@ int main(void){
 	Batiment = IMG_Load("Batiment.png");
 	int gameover = 1;
 	while(gameover){
-		SDL_BlitSurface(image,NULL,screen,&positionecran);
+		//SDL_BlitSurface(image,NULL,screen,&positionecran);
 		SDL_BlitSurface(Arbre,NULL,screen,&posarbre);
 		SDL_BlitSurface(Herbe,NULL,screen,&posherbe);
 		SDL_BlitSurface(Batiment,NULL,screen, &posbatiment);
@@ -77,7 +75,7 @@ int main(void){
 			}
 		}
 	}
-	SDL_FreeSurface(image);
+//	SDL_FreeSurface(image);
 	SDL_FreeSurface(Lune);
 	SDL_FreeSurface(Arbre);
 	SDL_FreeSurface(Obstacle1);
