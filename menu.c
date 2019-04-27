@@ -4,14 +4,16 @@
 #include <stdlib.h>
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_ttf.h>
+//#include "animationsaif.c"
+//#include "animation.c"
 /*#include "enigme.c"
  */
-
 #include "dep.c"
+//#include "objets.c"
 //#include "scrolling.c"
 
 
-int main(int argc, char *argv[])
+int menu(void)
  
 {
 
@@ -48,7 +50,7 @@ int main(int argc, char *argv[])
 		printf("Unable to initialize SDL: %s\n", SDL_GetError());
 		return -1;
 	}
-	ecran = SDL_SetVideoMode(1920, 1080, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
+	ecran = SDL_SetVideoMode(1300, 1024, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
 	if(ecran == NULL){
 		printf("Unable to set video mode: %s\n", SDL_GetError());
 		return -1;
@@ -132,8 +134,12 @@ SDL_FreeSurface(Menu);
 		SDL_BlitSurface(Credit,NULL,ecran,&positionCredit);
 		SDL_UpdateRect(ecran, 0, 0, 0, 0);
 		
-			case SDLK_RETURN:
-				dep();
+			//if ((event.key.keysym.sym==SDLK_RETURN) || (event.key.keysym.sym==SDLK_KP_ENTER)){
+
+			dep();
+			Mix_FreeMusic(music);  //	}
+
+//SDL_UpdateRect(ecran, 0, 0, 0, 0);
 			break;
 			
 		
