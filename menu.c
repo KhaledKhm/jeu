@@ -8,19 +8,20 @@
 //#include "animation.c"
 /*#include "enigme.c"
  */
+#include "grav.c"
 #include "dep.c"
 //#include "objets.c"
 //#include "scrolling.c"
 
 
-int menu(void)
+int menu( SDL_Surface *ecran)
  
 {
 
     int x,y,buttontest=0 ;
     TTF_Init();
     SDL_Surface *Menu ;
-    SDL_Surface *ecran ;
+    //SDL_Surface *ecran ;
     SDL_Surface *message ;
     SDL_Surface *Start ;
     //SDL_Surface *Continue1 = NULL;
@@ -50,7 +51,7 @@ int menu(void)
 		printf("Unable to initialize SDL: %s\n", SDL_GetError());
 		return -1;
 	}
-	ecran = SDL_SetVideoMode(1300, 1024, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
+	ecran = SDL_SetVideoMode(1024, 1024, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
 	if(ecran == NULL){
 		printf("Unable to set video mode: %s\n", SDL_GetError());
 		return -1;
@@ -122,25 +123,26 @@ SDL_FreeSurface(Menu);
 	    case SDLK_DOWN:
 		buttontest++;
 		if (buttontest==1){
+		Menu = SDL_LoadBMP("BackMenu.bmp");
 		Start=IMG_Load("StartYes.png");
 		Option=IMG_Load("OptionNo.png");
 		Credit=IMG_Load("CreditsNo.png");
 		Quit=IMG_Load("QuitNo.png");
 		SDL_BlitSurface(Menu,NULL,ecran, &positionMenu);
 		SDL_BlitSurface(Start,NULL,ecran,&positionStart);
-		Mix_PlayMusic(sound,1);
+	//	Mix_PlayMusic(sound,1);
 		SDL_BlitSurface(Quit,NULL,ecran,&positionQuit);
 		SDL_BlitSurface(Option,NULL,ecran,&positionOption);
 		SDL_BlitSurface(Credit,NULL,ecran,&positionCredit);
 		SDL_UpdateRect(ecran, 0, 0, 0, 0);
 		
-			//if ((event.key.keysym.sym==SDLK_RETURN) || (event.key.keysym.sym==SDLK_KP_ENTER)){
+		//	if ((event.key.keysym.sym==SDLK_RETURN) || (event.key.keysym.sym==SDLK_KP_ENTER)){
 
-			dep();
-			Mix_FreeMusic(music);  //	}
-
+			grav() ;	
+		//	objets(ecran);
+		//			}
 //SDL_UpdateRect(ecran, 0, 0, 0, 0);
-			break;
+		//	break;
 			
 		
 		}
@@ -267,6 +269,6 @@ SDL_FreeSurface(Menu);
     Mix_FreeMusic(music); //Libération de la musique
     Mix_FreeMusic(sound);
     Mix_CloseAudio(); //Fermeture de l'API
-    SDL_Quit();
+    //SDL_Quit();
     return 0;
 }
