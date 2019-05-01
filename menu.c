@@ -4,14 +4,8 @@
 #include <stdlib.h>
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_ttf.h>
-//#include "animationsaif.c"
-//#include "animation.c"
-/*#include "enigme.c"
- */
+
 #include "grav.c"
-#include "dep.c"
-//#include "objets.c"
-//#include "scrolling.c"
 
 
 int menu( SDL_Surface *ecran)
@@ -51,7 +45,7 @@ int menu( SDL_Surface *ecran)
 		printf("Unable to initialize SDL: %s\n", SDL_GetError());
 		return -1;
 	}
-	ecran = SDL_SetVideoMode(1024, 1024, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
+	ecran = SDL_SetVideoMode(1800, 1024, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
 	if(ecran == NULL){
 		printf("Unable to set video mode: %s\n", SDL_GetError());
 		return -1;
@@ -136,9 +130,11 @@ SDL_FreeSurface(Menu);
 		SDL_BlitSurface(Credit,NULL,ecran,&positionCredit);
 		SDL_UpdateRect(ecran, 0, 0, 0, 0);
 		
-		//	if ((event.key.keysym.sym==SDLK_RETURN) || (event.key.keysym.sym==SDLK_KP_ENTER)){
+			//if ((event.key.keysym.sym==SDLK_RETURN) || (event.key.keysym.sym==SDLK_KP_ENTER)){
 
-			grav() ;	
+			Mix_FreeMusic(music);			
+			grav() ;//}
+				
 		//	objets(ecran);
 		//			}
 //SDL_UpdateRect(ecran, 0, 0, 0, 0);
@@ -245,6 +241,9 @@ SDL_FreeSurface(Menu);
             case SDLK_ESCAPE:
               gameover = 1;
               break;
+	/*case SDL_MOUSEBUTTONDOWN:
+		 switch (event.key.keysym.sym) {
+	    		case SDL_BUTTON_LEFT:*/
           }
           break;
       }
