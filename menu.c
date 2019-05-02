@@ -110,6 +110,75 @@ SDL_FreeSurface(Menu);
         case SDL_QUIT:
           gameover = 1;
           break;
+	/* mouse */
+	case SDL_MOUSEBUTTONDOWN:
+		 switch (event.button.button) {
+	    		case SDL_BUTTON_LEFT:
+			if(((event.button.x>400)&&(event.button.x<=800))&&((event.button.y>150)&&(event.button.y<=240))){
+			Menu = SDL_LoadBMP("BackMenu.bmp");
+			Start=IMG_Load("StartYes.png");
+			Option=IMG_Load("OptionNo.png");
+			Credit=IMG_Load("CreditsNo.png");
+			Quit=IMG_Load("QuitNo.png");
+			buttontest=1;
+			//SDL_Delay(300);
+			SDL_BlitSurface(Menu,NULL,ecran, &positionMenu);
+			SDL_BlitSurface(Start,NULL,ecran,&positionStart);
+			SDL_BlitSurface(Option,NULL,ecran,&positionOption);
+			SDL_BlitSurface(Credit,NULL,ecran,&positionCredit);
+			SDL_BlitSurface(Quit,NULL,ecran,&positionQuit);
+			SDL_UpdateRect(ecran, 0, 0, 0, 0);
+			}
+
+			
+else if(((event.button.x>400)&&(event.button.x<=800))&&((event.button.y>270)&&(event.button.y<=360))){			
+			Menu = SDL_LoadBMP("BackMenu.bmp");
+			Start=IMG_Load("StartNo.png");
+			Option=IMG_Load("OptionYes.png");
+			Credit=IMG_Load("CreditsNo.png");
+			Quit=IMG_Load("QuitNo.png");
+			buttontest=2;
+			//SDL_Delay(300);
+			SDL_BlitSurface(Menu,NULL,ecran, &positionMenu);
+			SDL_BlitSurface(Start,NULL,ecran,&positionStart);
+			SDL_BlitSurface(Option,NULL,ecran,&positionOption);
+			SDL_BlitSurface(Credit,NULL,ecran,&positionCredit);
+			SDL_BlitSurface(Quit,NULL,ecran,&positionQuit);
+			SDL_UpdateRect(ecran, 0, 0, 0, 0);
+			}
+else if(((event.button.x>400)&&(event.button.x<=800))&&((event.button.y>390)&&(event.button.y<=500))){			
+			Menu = SDL_LoadBMP("BackMenu.bmp");
+			Start=IMG_Load("StartNo.png");
+			Option=IMG_Load("OptionNo.png");
+			Credit=IMG_Load("CreditsYes.png");
+			Quit=IMG_Load("QuitNo.png");
+			buttontest=3;
+			//SDL_Delay(300);
+			SDL_BlitSurface(Menu,NULL,ecran, &positionMenu);
+			SDL_BlitSurface(Start,NULL,ecran,&positionStart);
+			SDL_BlitSurface(Option,NULL,ecran,&positionOption);
+			SDL_BlitSurface(Credit,NULL,ecran,&positionCredit);
+			SDL_BlitSurface(Quit,NULL,ecran,&positionQuit);
+			SDL_UpdateRect(ecran, 0, 0, 0, 0);
+			}
+else if(((event.button.x>400)&&(event.button.x<=800))&&((event.button.y>530)&&(event.button.y<=640))){			
+			Menu = SDL_LoadBMP("BackMenu.bmp");
+			Start=IMG_Load("StartNo.png");
+			Option=IMG_Load("OptionNo.png");
+			Credit=IMG_Load("CreditsNo.png");
+			Quit=IMG_Load("QuitYes.png");
+			buttontest=4;
+			//SDL_Delay(300);
+			SDL_BlitSurface(Menu,NULL,ecran, &positionMenu);
+			SDL_BlitSurface(Start,NULL,ecran,&positionStart);
+			SDL_BlitSurface(Option,NULL,ecran,&positionOption);
+			SDL_BlitSurface(Credit,NULL,ecran,&positionCredit);
+			SDL_BlitSurface(Quit,NULL,ecran,&positionQuit);
+			SDL_UpdateRect(ecran, 0, 0, 0, 0);
+			}
+		break;}
+	
+        
 
         /* handle the keyboard */
         case SDL_KEYDOWN:
@@ -132,8 +201,8 @@ SDL_FreeSurface(Menu);
 		
 			//if ((event.key.keysym.sym==SDLK_RETURN) || (event.key.keysym.sym==SDLK_KP_ENTER)){
 
-			Mix_FreeMusic(music);			
-			grav() ;//}
+			//Mix_FreeMusic(music);			
+			//grav() ;//}
 				
 		//	objets(ecran);
 		//			}
@@ -151,7 +220,7 @@ SDL_FreeSurface(Menu);
 		SDL_BlitSurface(Menu,NULL,ecran, &positionMenu);
 		SDL_BlitSurface(Start,NULL,ecran,&positionStart);
 		SDL_BlitSurface(Option,NULL,ecran,&positionOption);
-		Mix_PlayMusic(sound,1);
+//		Mix_PlayMusic(sound,1);
 		SDL_BlitSurface(Credit,NULL,ecran,&positionCredit);
 		SDL_BlitSurface(Quit,NULL,ecran,&positionQuit);
 		SDL_UpdateRect(ecran, 0, 0, 0, 0);}
@@ -241,10 +310,8 @@ SDL_FreeSurface(Menu);
             case SDLK_ESCAPE:
               gameover = 1;
               break;
-	/*case SDL_MOUSEBUTTONDOWN:
-		 switch (event.key.keysym.sym) {
-	    		case SDL_BUTTON_LEFT:*/
-          }
+	break;}
+	  
           break;
       }
     }
